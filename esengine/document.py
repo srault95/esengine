@@ -62,6 +62,9 @@ class Document(with_metaclass(ModelMetaclass, BaseDocument)):
         """
         if not es and hasattr(cls, '_es'):
             es = cls._es if not callable(cls._es) else cls._es()
+        if not es:
+            from elasticsearch import Elasticsearch
+            es = Elasticsearch()
         validate_client(es)
         return es
 
