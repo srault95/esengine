@@ -58,7 +58,7 @@ class Document(with_metaclass(ModelMetaclass, BaseDocument)):
         This method also validades that the connection is a valid ES client.
 
         :param es: The Es client or None
-        :return: elasticsearch.ElasticSearch() instance or equivalent client
+        :return: elasticsearch.Elasticsearch() instance or equivalent client
         """
         if not es and hasattr(cls, '_es'):
             es = cls._es if not callable(cls._es) else cls._es()
